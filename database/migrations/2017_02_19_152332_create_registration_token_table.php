@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOfficeProjectTable extends Migration
+class CreateRegistrationTokenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateOfficeProjectTable extends Migration
      */
     public function up()
     {
-        Schema::create('office_project', function (Blueprint $table) {
+        Schema::create('registration_token', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('office_id')->unsigned();
-            $table->integer('project_id')->unsigned();
+            $table->string('user_email');
+            $table->string('confirmation_token');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateOfficeProjectTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('office_project');
+        Schema::dropIfExists('registration_token');
     }
 }
